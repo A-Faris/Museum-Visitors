@@ -13,22 +13,18 @@
   {
    "file_name": "./pipeline/test_extract.py",
    "errors": [
-    "pipeline/test_extract.py:5:0: W0612: Unused variable 'test_path_valid' (unused-variable)",
-    "pipeline/test_extract.py:1:0: W0612: Unused variable 'patch' (unused-variable)",
-    "pipeline/test_extract.py:2:0: W0612: Unused variable 'bucket_names' (unused-variable)",
-    "pipeline/test_extract.py:2:0: W0612: Unused variable 'download_bucket' (unused-variable)",
-    "pipeline/test_extract.py:2:0: W0612: Unused variable 'find_csv_files' (unused-variable)",
-    "pipeline/test_extract.py:2:0: W0612: Unused variable 'delete_files' (unused-variable)",
-    "pipeline/test_extract.py:2:0: W0612: Unused variable 'combine_csv' (unused-variable)",
-    "pipeline/test_extract.py:1:0: W0611: Unused patch imported from unittest.mock (unused-import)",
-    "pipeline/test_extract.py:2:0: W0611: Unused bucket_names imported from extract (unused-import)",
-    "pipeline/test_extract.py:2:0: W0611: Unused download_bucket imported from extract (unused-import)",
-    "pipeline/test_extract.py:2:0: W0611: Unused find_csv_files imported from extract (unused-import)",
-    "pipeline/test_extract.py:2:0: W0611: Unused delete_files imported from extract (unused-import)",
-    "pipeline/test_extract.py:2:0: W0611: Unused combine_csv imported from extract (unused-import)"
+    "pipeline/test_extract.py:44:37: W0612: Unused variable 'e_info' (unused-variable)",
+    "pipeline/test_extract.py:6:0: W0612: Unused variable 'test_path_valid' (unused-variable)",
+    "pipeline/test_extract.py:12:0: W0612: Unused variable 'test_bucket_names_valid' (unused-variable)",
+    "pipeline/test_extract.py:22:0: W0612: Unused variable 'test_download_bucket_valid' (unused-variable)",
+    "pipeline/test_extract.py:34:0: W0612: Unused variable 'test_find_csv_files_valid' (unused-variable)",
+    "pipeline/test_extract.py:43:0: W0612: Unused variable 'test_find_csv_files_no_csv' (unused-variable)",
+    "pipeline/test_extract.py:52:0: W0612: Unused variable 'test_delete_files_valid' (unused-variable)",
+    "pipeline/test_extract.py:3:0: W0612: Unused variable 'combine_csv' (unused-variable)",
+    "pipeline/test_extract.py:3:0: W0611: Unused combine_csv imported from extract (unused-import)"
    ],
-   "score": 0.0
+   "score": 69.0
   }
  ],
- "average_score": 66.7
+ "average_score": 89.7
 }
