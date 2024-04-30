@@ -4,7 +4,11 @@
 Your code has been rated at 10.00/10
 
 ./pipeline/extract.py
+************* Module extract
+pipeline/extract.py:2:0: W0612: Unused variable 'Value' (unused-variable)
+pipeline/extract.py:2:0: W0611: Unused Value imported from multiprocessing (unused-import)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 9.50/10
 
+./pipeline/test_extract.py
