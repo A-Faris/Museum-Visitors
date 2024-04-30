@@ -9,15 +9,15 @@ BUCKET_FOLDER = "buckets"
 USEFUL_FILES = "^lmnh.*.(csv|json)$"
 
 
+def path(file: str, folder: str = BUCKET_FOLDER) -> str:
+    """Path location to a file inside a folder"""
+    return os.path.join(folder, file)
+
+
 def bucket_names(clients) -> str:
     """Print out bucket names"""
     sss = clients.list_buckets()["Buckets"]
     return "\n".join([bucket["Name"] for bucket in sss])
-
-
-def path(file: str, folder: str = BUCKET_FOLDER) -> str:
-    """Path location to a file inside a folder"""
-    return os.path.join(folder, file)
 
 
 def download_bucket(clients, bucket_name: str) -> None:
@@ -33,11 +33,11 @@ def find_csv_files(folder: str) -> list:
     bucket_files = os.listdir(folder)
     csv_files = [file for file in bucket_files if file.endswith('.csv')]
     if not csv_files:
-        raise ValueError("No csv files found")
+        raise NameError("No csv files found")
     return csv_files
 
 
-def delete_files(files: str, folder: str) -> None:
+def delete_files(files: list, folder: str) -> None:
     """Delete csv files"""
     for file in files:
         os.remove(path(file, folder))
