@@ -78,4 +78,6 @@ VALUES (1, 'Adaptation', 0, 1, TO_DATE('01/07/19', 'DD/MM/YY'), 'How insect evol
 (5, 'Thunder Lizards', 1, 5, TO_DATE('01/02/23', 'DD/MM/YY'), 'How new research is making scientists rethink what dinosaurs really looked like.'),
 (2, 'The Crenshaw Collection', 2, 2, TO_DATE('03/03/21', 'DD/MM/YY'), 'An exhibition of 18th Century watercolours, mostly focused on South American wildlife.'),
 (4, 'Our Polluted World', 3, 4, TO_DATE('12/05/21', 'DD/MM/YY'), 'A hard-hitting exploration of humanity''s impact on the environment.'),
-(3, 'Cetacean Sensations', 1, 2, TO_DATE('01/07/19', 'DD/MM/YY'), 'Whales: from ancient myth to critically endangered.')
+(3, 'Cetacean Sensations', 1, 2, TO_DATE('01/07/19', 'DD/MM/YY'), 'Whales: from ancient myth to critically endangered.');
+
+SELECT * FROM exhibition

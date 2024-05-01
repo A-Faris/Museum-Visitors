@@ -1,10 +1,10 @@
 ./pipeline/pipeline.py
 ************* Module pipeline
-pipeline/pipeline.py:16:33: W0622: Redefining built-in 'type' (redefined-builtin)
-pipeline/pipeline.py:44:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+pipeline/pipeline.py:17:33: W0622: Redefining built-in 'type' (redefined-builtin)
+pipeline/pipeline.py:45:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
 
 -----------------------------------
-Your code has been rated at 9.29/10
+Your code has been rated at 9.31/10
 
 ./pipeline/extract.py
 ************* Module extract

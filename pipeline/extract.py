@@ -1,4 +1,6 @@
 """Extract file"""
+
+import argparse
 import os
 import re
 import glob
@@ -13,6 +15,12 @@ USEFUL_FILES = "^lmnh.*.(csv|json)$"
 MERGE_CSV_FILE = 'lmnh_hist_data.csv'
 
 
+def create_folder(folder):
+    """Create a folder to store data"""
+    if folder and not os.path.exists(folder):
+        os.mkdir(folder)
+
+
 def get_client(access_key, secret_access_key):
     """Returns the s3 client"""
     return client('s3', aws_access_key_id=access_key,
@@ -24,10 +32,10 @@ def path(file: str, folder: str = ".") -> str:
     return os.path.join(folder, file)
 
 
-def bucket_names(clients) -> str:
+def bucket_names(clients) -> list:
     """Print out bucket names"""
     buckets = clients.list_buckets()["Buckets"]
-    return "\n".join([bucket["Name"] for bucket in buckets])
+    return [bucket["Name"] for bucket in buckets]
 
 
 def download_bucket(clients, bucket_name: str, folder=".") -> None:
@@ -54,7 +62,7 @@ def combine_csv_files(csv_files: list, merge_file_name: str, folder: str = ".") 
 
 def delete_files(files: list, exception: str = None, folder: str = ".") -> list[None]:
     """Delete files in folder"""
-    if exception:
+    if exception in files:
         files.remove(exception)
     return [os.remove(path(file, folder)) for file in files if os.path.exists(path(file, folder))]
 
@@ -73,12 +81,28 @@ if __name__ == '__main__':
     clients = get_client(dotenv_values().get("ACCESS_KEY"),
                          dotenv_values().get("SECRET_ACCESS_KEY"))
 
-    bucket_names(clients)
-    download_bucket(clients, BUCKET_NAME, BUCKET_FOLDER)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--bucket", "-b",
+                        choices=bucket_names(clients),
+                        default=BUCKET_NAME,
+                        help="Choose bucket name to download")
+    parser.add_argument("--folder", "-f",
+                        default=BUCKET_FOLDER,
+                        help="Choose bucket folder to store the data")
+    parser.add_argument("--num_of_rows", "-r",
+                        help="Choose number of rows to upload to the database",
+                        type=int)
+    parser.add_argument("--log_file", "-l",
+                        default=False,
+                        help="Choose to log to a file or to the terminal",
+                        type=int)
+    args = parser.parse_args()
+    create_folder(args.folder)
+    download_bucket(clients, args.bucket, args.folder)
 
-    csv_files = find_file_paths('csv', BUCKET_FOLDER)
-    combine_csv_files(csv_files, MERGE_CSV_FILE, BUCKET_FOLDER)
-    delete_files(csv_files, MERGE_CSV_FILE, BUCKET_FOLDER)
+    csv_files = find_file_paths('csv', args.folder)
+    combine_csv_files(csv_files, MERGE_CSV_FILE, args.folder)
+    delete_files(csv_files, MERGE_CSV_FILE, args.folder)
 
     # json_files = find_files('.json', BUCKET_FOLDER)
     # combine_json_files(json_files, 'lmnh_exhibition_data.json', BUCKET_FOLDER)
