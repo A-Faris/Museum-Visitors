@@ -13,32 +13,30 @@ def get_db_connection(dbname="museum") -> connection:
                    cursor_factory=RealDictCursor)
 
 
-def import_to_request(csv_row) -> list:
+def import_to_request(site: str, type: str, at: str) -> None:
     """Get subject info"""
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute(
-        """""")
+        """INSERT INTO request(exhibition_id, assistance_id , created_at)
+        VALUES (%s, %s, %s)""", (site, int(float(type)), at))
 
-    data = cur.fetchall()
     conn.commit()
     cur.close()
-    return data
 
 
-def import_to_review(csv_row) -> list:
+def import_to_review(site: str, val: str, at: str) -> None:
     """Get subject info"""
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute(
-        """""")
+        """INSERT INTO review(exhibition_id, rating_id, created_at)
+        VALUES (%s, %s, %s)""", (site, val, at))
 
-    data = cur.fetchall()
     conn.commit()
     cur.close()
-    return data
 
 
 if __name__ == "__main__":
@@ -47,5 +45,7 @@ if __name__ == "__main__":
         reader = csv.DictReader(csvfile)
         for row in reader:
             if row['type']:
-
+                import_to_request(row['site'], row['type'], row['at'])
+            else:
+                import_to_review(row['site'], row['val'], row['at'])
             print(row['at'], row['site'], row['val'], row['type'])
