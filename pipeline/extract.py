@@ -31,19 +31,26 @@ def download_bucket(clients, bucket_name: str, folder="./") -> None:
                 bucket_name, file["Key"], path(file["Key"], folder))
 
 
+# def find_files(file_format: str = "", folder: str = "./") -> list:
+#     "Return files of file format in folder"
+#     bucket_files = os.listdir(folder)
+#     files = [file for file in bucket_files if file.endswith(file_format)]
+#     if not files:
+#         raise NameError(f"No {file_format} files found")
+#     return files
+
+
 def find_files(file_format: str = "", folder: str = "./") -> list:
     "Return files of file format in folder"
-    bucket_files = os.listdir(folder)
-    csv_files = [file for file in bucket_files if file.endswith(file_format)]
-    if not csv_files:
-        raise NameError(f"No {file_format} files found")
-    return csv_files
+    for file in glob.iglob(f'*.{file_format}', root_dir=folder):
+        return file
 
 
 def delete_files(files: list, folder: str = "./") -> None:
     """Delete files in folder"""
     for file in files:
-        os.remove(path(file, folder))
+        if os.path.exists(file):
+            os.remove(path(file, folder))
 
 
 def combine_csv_files(csv_files: list, merge_file_name: str, folder: str = "./") -> None:
@@ -72,13 +79,13 @@ if __name__ == '__main__':
         aws_secret_access_key=dotenv_values().get("SECRET_ACCESS_KEY"))
     folder = "./"
 
-    bucket_names(clients)
-    download_bucket(clients, "sigma-resources-museum", folder)
+    # bucket_names(clients)
+    # download_bucket(clients, "sigma-resources-museum", folder)
 
     csv_files = find_files('.csv')
-    combine_csv_files(csv_files, 'lmnh_hist_data.csv', folder)
-    delete_files(csv_files, folder)
+    # combine_csv_files(csv_files, 'lmnh_hist_data.csv', folder)
+    # delete_files(csv_files, folder)
 
-    json_files = find_files('.json', folder)
-    combine_json_files(json_files, 'lmnh_exhibition_data.json', folder)
-    delete_files(json_files, folder)
+    # json_files = find_files('.json', folder)
+    # combine_json_files(json_files, 'lmnh_exhibition_data.json', folder)
+    # delete_files(json_files, folder)
