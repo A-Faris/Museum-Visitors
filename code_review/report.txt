@@ -4,9 +4,18 @@
 Your code has been rated at 10.00/10
 
 ./pipeline/extract.py
+************* Module extract
+pipeline/extract.py:59:22: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+pipeline/extract.py:62:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+pipeline/extract.py:59:22: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+pipeline/extract.py:58:63: W0613: Unused argument 'folder' (unused-argument)
+pipeline/extract.py:73:4: C0103: Constant name "folder" doesn't conform to the `UPPER_CASE` group in the '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)
+pipeline/extract.py:4:0: W0612: Unused variable 'glob' (unused-variable)
+pipeline/extract.py:10:0: W0612: Unused variable 'BUCKET_FOLDER' (unused-variable)
+pipeline/extract.py:4:0: W0611: Unused import glob (unused-import)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 8.43/10
 
 ./pipeline/test_extract.py
 ************* Module test_extract
@@ -17,8 +26,8 @@ pipeline/test_extract.py:22:0: W0612: Unused variable 'test_download_bucket_vali
 pipeline/test_extract.py:34:0: W0612: Unused variable 'test_find_csv_files_valid' (unused-variable)
 pipeline/test_extract.py:43:0: W0612: Unused variable 'test_find_csv_files_no_csv' (unused-variable)
 pipeline/test_extract.py:52:0: W0612: Unused variable 'test_delete_files_valid' (unused-variable)
-pipeline/test_extract.py:3:0: W0612: Unused variable 'combine_csv' (unused-variable)
-pipeline/test_extract.py:3:0: W0611: Unused combine_csv imported from extract (unused-import)
+pipeline/test_extract.py:3:0: W0612: Unused variable 'combine_csv_files' (unused-variable)
+pipeline/test_extract.py:3:0: W0611: Unused combine_csv_files imported from extract (unused-import)
 
 -----------------------------------
 Your code has been rated at 6.90/10
