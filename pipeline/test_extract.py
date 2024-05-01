@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from extract import bucket_names, path, download_bucket, find_csv_files, delete_files, combine_csv
+from extract import bucket_names, path, download_bucket, find_files, delete_files, combine_csv_files
 
 
 def test_path_valid() -> None:
@@ -36,7 +36,7 @@ def test_find_csv_files_valid(test_os) -> None:
     test_os.listdir.return_value = ["file.txt",
                                     "file.csv", "random.csv", "random.txt"]
 
-    assert find_csv_files(folder) == ["file.csv", "random.csv"]
+    assert find_files(folder) == ["file.csv", "random.csv"]
 
 
 @patch("extract.os")
@@ -44,7 +44,7 @@ def test_find_csv_files_no_csv(test_os) -> None:
     with pytest.raises(NameError) as e_info:
         folder = "A random folder"
         test_os.listdir.return_value = ["file.txt", "random.txt"]
-        find_csv_files(folder)
+        find_files(folder)
         # assert e_info == "No csv files found"
 
 
