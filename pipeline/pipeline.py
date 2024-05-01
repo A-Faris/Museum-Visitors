@@ -1,5 +1,6 @@
 """Functions that interact with the database."""
 
+import logging
 import csv
 from psycopg2 import connect
 from psycopg2.extras import RealDictCursor
@@ -14,7 +15,7 @@ def get_db_connection(dbname="museum") -> connection:
 
 
 def import_to_request(site: str, type: str, at: str) -> None:
-    """Get subject info"""
+    """Import into table request"""
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -27,7 +28,7 @@ def import_to_request(site: str, type: str, at: str) -> None:
 
 
 def import_to_review(site: str, val: str, at: str) -> None:
-    """Get subject info"""
+    """Import into table review"""
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -48,4 +49,4 @@ if __name__ == "__main__":
                 import_to_request(row['site'], row['type'], row['at'])
             else:
                 import_to_review(row['site'], row['val'], row['at'])
-            print(row['at'], row['site'], row['val'], row['type'])
+        logging.info("All files downloaded.")
