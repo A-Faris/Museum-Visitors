@@ -2,44 +2,12 @@
  "files": [
   {
    "file_name": "./pipeline/pipeline.py",
-   "errors": [],
-   "score": 100.0
-  },
-  {
-   "file_name": "./pipeline/extract.py",
    "errors": [
-    "pipeline/extract.py:66:22: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
-    "pipeline/extract.py:69:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
-    "pipeline/extract.py:66:22: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
-    "pipeline/extract.py:65:63: W0613: Unused argument 'folder' (unused-argument)",
-    "pipeline/extract.py:80:4: C0103: Constant name \"folder\" doesn't conform to the `UPPER_CASE` group in the '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)",
-    "pipeline/extract.py:10:0: W0612: Unused variable 'BUCKET_FOLDER' (unused-variable)",
-    "pipeline/extract.py:19:0: W0612: Unused variable 'bucket_names' (unused-variable)",
-    "pipeline/extract.py:25:0: W0612: Unused variable 'download_bucket' (unused-variable)",
-    "pipeline/extract.py:49:0: W0612: Unused variable 'delete_files' (unused-variable)",
-    "pipeline/extract.py:56:0: W0612: Unused variable 'combine_csv_files' (unused-variable)",
-    "pipeline/extract.py:65:0: W0612: Unused variable 'combine_json_files' (unused-variable)",
-    "pipeline/extract.py:77:4: W0612: Unused variable 'clients' (unused-variable)",
-    "pipeline/extract.py:80:4: W0612: Unused variable 'folder' (unused-variable)",
-    "pipeline/extract.py:85:4: W0612: Unused variable 'csv_files' (unused-variable)"
+    "pipeline/pipeline.py:51:13: E0001: Parsing failed: 'expected an indented block after 'if' statement on line 49 (pipeline, line 51)' (syntax-error)",
+    "pipeline/extract.py:44:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)"
    ],
-   "score": 66.7
-  },
-  {
-   "file_name": "./pipeline/test_extract.py",
-   "errors": [
-    "pipeline/test_extract.py:44:37: W0612: Unused variable 'e_info' (unused-variable)",
-    "pipeline/test_extract.py:6:0: W0612: Unused variable 'test_path_valid' (unused-variable)",
-    "pipeline/test_extract.py:12:0: W0612: Unused variable 'test_bucket_names_valid' (unused-variable)",
-    "pipeline/test_extract.py:22:0: W0612: Unused variable 'test_download_bucket_valid' (unused-variable)",
-    "pipeline/test_extract.py:34:0: W0612: Unused variable 'test_find_csv_files_valid' (unused-variable)",
-    "pipeline/test_extract.py:43:0: W0612: Unused variable 'test_find_csv_files_no_csv' (unused-variable)",
-    "pipeline/test_extract.py:52:0: W0612: Unused variable 'test_delete_files_valid' (unused-variable)",
-    "pipeline/test_extract.py:3:0: W0612: Unused variable 'combine_csv_files' (unused-variable)",
-    "pipeline/test_extract.py:3:0: W0611: Unused combine_csv_files imported from extract (unused-import)"
-   ],
-   "score": 69.0
+   "score": 97.4
   }
  ],
- "average_score": 78.6
+ "average_score": 97.4
 }
