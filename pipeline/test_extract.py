@@ -1,6 +1,7 @@
-import pytest
 from unittest.mock import patch
-from extract import bucket_names, path, download_bucket, find_files, delete_files, combine_csv_files
+from extract import bucket_names, path, download_bucket, find_file_paths, delete_files, combine_csv_files
+
+# pylint: skip-file
 
 
 def test_path_valid() -> None:
@@ -30,22 +31,19 @@ def test_download_bucket_valid(test_client) -> None:
     assert test_client.download_file.call_count == 2
 
 
-@patch("extract.os")
-def test_find_csv_files_valid(test_os) -> None:
+@patch("extract.glob")
+def test_find_csv_files_valid(test_glob) -> None:
     folder = "A random folder"
-    test_os.listdir.return_value = ["file.txt",
-                                    "file.csv", "random.csv", "random.txt"]
+    test_glob.iglob.return_value = ["file.csv", "random.csv"]
 
-    assert find_files(folder) == ["file.csv", "random.csv"]
+    assert find_file_paths("csv", folder) == ["file.csv", "random.csv"]
 
 
-@patch("extract.os")
-def test_find_csv_files_no_csv(test_os) -> None:
-    with pytest.raises(NameError) as e_info:
-        folder = "A random folder"
-        test_os.listdir.return_value = ["file.txt", "random.txt"]
-        find_files(folder)
-        # assert e_info == "No csv files found"
+@patch("extract.glob")
+def test_find_csv_files_no_csv(test_glob) -> None:
+    folder = "A random folder"
+    test_glob.listdir.return_value = ["file.txt", "random.txt"]
+    assert find_file_paths("csv", folder) == []
 
 
 @patch("extract.os")
@@ -53,9 +51,17 @@ def test_delete_files_valid(test_os) -> None:
     folder = "A random folder"
     files = ["file1", "file2"]
     test_os.remove.return_value = []
-    delete_files(files, folder)
+    delete_files(files)
     assert test_os.remove.call_count == 2
 
+
+@patch("extract.os")
+def test_delete_files_valid_exception(test_os) -> None:
+    folder = "A random folder"
+    files = ["file1", "file2"]
+    test_os.remove.return_value = []
+    delete_files(files, "file1")
+    assert test_os.remove.call_count == 1
 
 # def combine_csv(csv_files: list, merge_file_name: str, folder: str) -> pd.DataFrame:
 #     """Combine multiple csv files into one csv file"""
