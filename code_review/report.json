@@ -3,11 +3,18 @@
   {
    "file_name": "./pipeline/pipeline.py",
    "errors": [
-    "pipeline/pipeline.py:51:13: E0001: Parsing failed: 'expected an indented block after 'if' statement on line 49 (pipeline, line 51)' (syntax-error)",
+    "pipeline/pipeline.py:16:33: W0622: Redefining built-in 'type' (redefined-builtin)",
+    "pipeline/pipeline.py:44:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)"
+   ],
+   "score": 92.9
+  },
+  {
+   "file_name": "./pipeline/extract.py",
+   "errors": [
     "pipeline/extract.py:44:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)"
    ],
    "score": 97.4
   }
  ],
- "average_score": 97.4
+ "average_score": 95.2
 }
