@@ -3,18 +3,30 @@
   {
    "file_name": "./pipeline/pipeline.py",
    "errors": [
-    "pipeline/pipeline.py:17:33: W0622: Redefining built-in 'type' (redefined-builtin)",
-    "pipeline/pipeline.py:45:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)"
+    "pipeline/pipeline.py:12:0: W0401: Wildcard import extract (wildcard-import)",
+    "pipeline/pipeline.py:29:33: W0622: Redefining built-in 'type' (redefined-builtin)",
+    "pipeline/pipeline.py:57:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
+    "pipeline/pipeline.py:9:0: W0612: Unused variable 'connect' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 'RealDictCursor' (unused-variable)",
+    "pipeline/pipeline.py:12:0: W0612: Unused variable 'os' (unused-variable)",
+    "pipeline/pipeline.py:12:0: W0612: Unused variable 're' (unused-variable)",
+    "pipeline/pipeline.py:12:0: W0612: Unused variable 'glob' (unused-variable)",
+    "pipeline/pipeline.py:12:0: W0612: Unused variable 'pd' (unused-variable)",
+    "pipeline/pipeline.py:12:0: W0612: Unused variable 'USEFUL_FILES' (unused-variable)",
+    "pipeline/pipeline.py:12:0: W0612: Unused variable 'client' (unused-variable)",
+    "pipeline/pipeline.py:9:0: W0611: Unused connect imported from psycopg2 (unused-import)",
+    "pipeline/pipeline.py:10:0: W0611: Unused RealDictCursor imported from psycopg2.extras (unused-import)",
+    "pipeline/pipeline.py:12:0: W0614: Unused import(s) os, re, glob, pd, USEFUL_FILES and client from wildcard import of extract (unused-wildcard-import)"
    ],
-   "score": 93.1
+   "score": 75.4
   },
   {
    "file_name": "./pipeline/extract.py",
    "errors": [
-    "pipeline/extract.py:44:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)"
+    "pipeline/extract.py:52:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)"
    ],
-   "score": 97.4
+   "score": 97.9
   }
  ],
- "average_score": 95.2
+ "average_score": 86.7
 }
