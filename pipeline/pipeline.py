@@ -1,13 +1,11 @@
 """Functions that interact with the database."""
 
-import psycopg2.extras
 from dotenv import load_dotenv
 from os import environ
 import logging
 import csv
 import time
 from psycopg2 import connect
-from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import connection
 from extract import *
 
@@ -17,7 +15,7 @@ LOG_FOLDER = "logs"
 def get_db_connection() -> connection:
     """Get connection"""
     load_dotenv()
-    return psycopg2.connect(
+    return connect(
         user=environ["DATABASE_USERNAME"],
         password=environ["DATABASE_PASSWORD"],
         host=environ["DATABASE_IP"],
@@ -26,44 +24,47 @@ def get_db_connection() -> connection:
     )
 
 
-def import_to_request(site: str, type: str, at: str, limit: int = 0) -> None:
+def import_to_request(site: str, type: str, at: str) -> None:
     """Import into table request"""
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute(
         """INSERT INTO request(exhibition_id, assistance_id, created_at)
-        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, float(type), at, limit))
+        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, float(type), at))
 
     conn.commit()
     cur.close()
 
 
-def import_to_review(site: str, val: str, at: str, limit: int = 0) -> None:
+def import_to_review(site: str, val: str, at: str) -> None:
     """Import into table review"""
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute(
         """INSERT INTO review(exhibition_id, rating_id, created_at)
-        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, val, at, limit))
+        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, val, at))
 
     conn.commit()
     cur.close()
+    logging.info("All files downloaded.")
 
 
-def import_to_database(csv_file: str, folder: str):
+def import_to_database(csv_file: str, folder: str, limit: int = None):
     file = path(csv_file, folder)
     with open(file, newline='') as csvfile:
+        if limit:
+            csvfile = [next(csvfile) for _ in range(limit)]
         reader = csv.DictReader(csvfile)
         for row in reader:
             if row['type']:
                 import_to_request(row['site'], row['type'],
-                                  row['at'], args.num_of_rows)
+                                  row['at'])
                 logging.info("csv data imported to request.")
             else:
                 import_to_review(row['site'], row['val'],
-                                 row['at'], args.num_of_rows)
+                                 row['at'])
                 logging.info("csv data imported to review.")
         logging.info("All files downloaded.")
 
@@ -107,4 +108,4 @@ if __name__ == "__main__":
     combine_csv_files(csv_files, args.csv_file, args.folder)
     delete_files(csv_files, args.csv_file, args.folder)
 
-    import_to_database(args.csv_file, args.folder)
+    import_to_database(args.csv_file, args.folder, args.num_of_rows)
