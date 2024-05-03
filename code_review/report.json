@@ -1,24 +1,20 @@
 {
  "files": [
   {
-   "file_name": "./pipeline/pipeline.py",
+   "file_name": "./coding_problems/wednesday/test_solution.py",
    "errors": [
-    "pipeline/pipeline.py:12:0: W0401: Wildcard import extract (wildcard-import)",
-    "pipeline/pipeline.py:29:33: W0622: Redefining built-in 'type' (redefined-builtin)",
-    "pipeline/pipeline.py:57:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
-    "pipeline/pipeline.py:9:0: W0612: Unused variable 'connect' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 'RealDictCursor' (unused-variable)",
-    "pipeline/pipeline.py:12:0: W0612: Unused variable 'os' (unused-variable)",
-    "pipeline/pipeline.py:12:0: W0612: Unused variable 're' (unused-variable)",
-    "pipeline/pipeline.py:12:0: W0612: Unused variable 'glob' (unused-variable)",
-    "pipeline/pipeline.py:12:0: W0612: Unused variable 'pd' (unused-variable)",
-    "pipeline/pipeline.py:12:0: W0612: Unused variable 'USEFUL_FILES' (unused-variable)",
-    "pipeline/pipeline.py:12:0: W0612: Unused variable 'client' (unused-variable)",
-    "pipeline/pipeline.py:9:0: W0611: Unused connect imported from psycopg2 (unused-import)",
-    "pipeline/pipeline.py:10:0: W0611: Unused RealDictCursor imported from psycopg2.extras (unused-import)",
-    "pipeline/pipeline.py:12:0: W0614: Unused import(s) os, re, glob, pd, USEFUL_FILES and client from wildcard import of extract (unused-wildcard-import)"
+    "pipeline/pipeline.py:10:0: W0401: Wildcard import extract (wildcard-import)",
+    "pipeline/pipeline.py:27:33: W0622: Redefining built-in 'type' (redefined-builtin)",
+    "pipeline/pipeline.py:56:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 'os' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 're' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 'glob' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 'pd' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 'USEFUL_FILES' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0612: Unused variable 'client' (unused-variable)",
+    "pipeline/pipeline.py:10:0: W0614: Unused import(s) os, re, glob, pd, USEFUL_FILES and client from wildcard import of extract (unused-wildcard-import)"
    ],
-   "score": 75.4
+   "score": 82.8
   },
   {
    "file_name": "./pipeline/extract.py",
@@ -26,7 +22,66 @@
     "pipeline/extract.py:52:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)"
    ],
    "score": 97.9
+  },
+  {
+   "file_name": "./pipeline/test_extract.py",
+   "errors": [
+    "workshop/movie_api/api.py:26:30: E1131: unsupported operand type(s) for | (unsupported-binary-operation)",
+    "workshop/movie_api/api.py:28:22: R6201: Consider using set for membership test (use-set-for-membership)",
+    "workshop/movie_api/api.py:33:25: R6201: Consider using set for membership test (use-set-for-membership)",
+    "workshop/movie_api/api.py:37:0: W0612: Unused variable 'endpoint_index' (unused-variable)",
+    "workshop/movie_api/api.py:43:0: W0612: Unused variable 'endpoint_get_movies' (unused-variable)",
+    "workshop/movie_api/api.py:64:0: W0612: Unused variable 'endpoint_post_movies' (unused-variable)",
+    "workshop/movie_api/api.py:98:0: W0612: Unused variable 'endpoint_patch_movie' (unused-variable)",
+    "workshop/movie_api/api.py:125:0: W0612: Unused variable 'endpoint_get_movie' (unused-variable)",
+    "workshop/movie_api/api.py:136:0: W0612: Unused variable 'endpoint_delete_movie' (unused-variable)",
+    "workshop/movie_api/api.py:147:0: W0612: Unused variable 'endpoint_get_genres' (unused-variable)",
+    "workshop/movie_api/api.py:158:0: W0612: Unused variable 'endpoint_movies_by_genre' (unused-variable)",
+    "workshop/movie_api/api.py:173:0: W0612: Unused variable 'endpoint_search_actor' (unused-variable)",
+    "workshop/movie_api/api.py:190:0: W0612: Unused variable 'endpoint_get_movies_by_country' (unused-variable)"
+   ],
+   "score": 84.4
+  },
+  {
+   "file_name": "./workshop/movie_api/test_api.py",
+   "errors": [
+    "workshop/movie_api/import_movie.py:42:0: R0913: Too many arguments (11/10) (too-many-arguments)"
+   ],
+   "score": 97.8
+  },
+  {
+   "file_name": "./workshop/movie_api/database.py",
+   "errors": [
+    "workshop/marine_experiments/database_functions.py:107:21: R6102: Consider using an in-place tuple instead of list (consider-using-tuple)",
+    "workshop/marine_experiments/database_functions.py:8:0: W0612: Unused variable 'get_db_connection' (unused-variable)",
+    "workshop/marine_experiments/database_functions.py:14:0: W0612: Unused variable 'get_subject_info' (unused-variable)",
+    "workshop/marine_experiments/database_functions.py:32:0: W0612: Unused variable 'get_experiment_info' (unused-variable)",
+    "workshop/marine_experiments/database_functions.py:56:0: W0612: Unused variable 'delete_experiment_info' (unused-variable)",
+    "workshop/marine_experiments/database_functions.py:72:0: W0612: Unused variable 'post_experiment_info' (unused-variable)",
+    "workshop/marine_experiments/database_functions.py:91:0: W0612: Unused variable 'get_subject_id_info' (unused-variable)"
+   ],
+   "score": 85.1
+  },
+  {
+   "file_name": "./workshop/marine_experiments/api.py",
+   "errors": [
+    "workshop/marine_experiments/api.py:61:26: R6201: Consider using set for membership test (use-set-for-membership)",
+    "workshop/marine_experiments/api.py:16:0: W0612: Unused variable 'get_subject' (unused-variable)",
+    "workshop/marine_experiments/api.py:22:0: W0612: Unused variable 'get_experiment' (unused-variable)",
+    "workshop/marine_experiments/api.py:38:0: W0612: Unused variable 'delete_experiment' (unused-variable)",
+    "workshop/marine_experiments/api.py:47:0: W0612: Unused variable 'post_experiment' (unused-variable)",
+    "workshop/marine_experiments/api.py:80:0: W0612: Unused variable 'get_subject_id' (unused-variable)"
+   ],
+   "score": 88.7
+  },
+  {
+   "file_name": "./workshop/marine_experiments/test_api.py",
+   "errors": [
+    " (previous run: 8.44/10, +0.43)",
+    "workshop/import_movie.py:42:0: R0913: Too many arguments (11/10) (too-many-arguments)"
+   ],
+   "score": 97.8
   }
  ],
- "average_score": 86.7
+ "average_score": 90.6
 }
