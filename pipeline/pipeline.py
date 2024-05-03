@@ -1,13 +1,16 @@
 """Functions that interact with the database."""
 
-from dotenv import load_dotenv
-from os import environ
 import logging
 import csv
 import time
+import argparse
+from os import environ
+from dotenv import load_dotenv
 from psycopg2 import connect
 from psycopg2.extensions import connection
-from extract import *
+from extract import BUCKET_FOLDER, MERGE_CSV_FILE, BUCKET_NAME, \
+    path, get_client, find_file_paths, create_folder, download_bucket, \
+    dotenv_values, combine_csv_files, delete_files, bucket_names
 
 LOG_FOLDER = "logs"
 
@@ -24,14 +27,14 @@ def get_db_connection() -> connection:
     )
 
 
-def import_to_request(site: str, type: str, at: str) -> None:
+def import_to_request(site: str, type_db: str, at: str) -> None:
     """Import into table request"""
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute(
         """INSERT INTO request(exhibition_id, assistance_id, created_at)
-        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, float(type), at))
+        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, float(type_db), at))
 
     conn.commit()
     cur.close()
@@ -52,8 +55,9 @@ def import_to_review(site: str, val: str, at: str) -> None:
 
 
 def import_to_database(csv_file: str, folder: str, limit: int = None):
+    """Import csv file into the RDS database"""
     file = path(csv_file, folder)
-    with open(file, newline='') as csvfile:
+    with open(file, newline='', encoding="utf-8") as csvfile:
         if limit:
             csvfile = [next(csvfile) for _ in range(limit)]
         reader = csv.DictReader(csvfile)
@@ -83,7 +87,7 @@ if __name__ == "__main__":
                         help="Choose bucket folder to store the data. Default 'buckets'.")
     parser.add_argument("--csv_file", "-c",
                         default=MERGE_CSV_FILE,
-                        help="Choose name of csv file to store the data. Default 'lmnh_hist_data.csv'.")
+                        help="Choose name of csv file to store the data. 'lmnh_hist_data.csv'.")
     parser.add_argument("--num_of_rows", "-r",
                         help="Choose number of rows to upload to the database",
                         type=int)

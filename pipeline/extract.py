@@ -32,24 +32,24 @@ def path(file: str, folder: str = ".") -> str:
     return os.path.join(folder, file)
 
 
-def bucket_names(clients) -> list:
+def bucket_names(sss) -> list:
     """Print out bucket names"""
-    buckets = clients.list_buckets()["Buckets"]
+    buckets = sss.list_buckets()["Buckets"]
     return [bucket["Name"] for bucket in buckets]
 
 
-def download_bucket(clients, bucket_name: str, folder=".") -> None:
+def download_bucket(sss, bucket_name: str, folder=".") -> None:
     """Download the bucket contents"""
-    bucket = clients.list_objects(Bucket=bucket_name)
+    bucket = sss.list_objects(Bucket=bucket_name)
     for file in bucket["Contents"]:
         if re.search(USEFUL_FILES, file["Key"]):
-            clients.download_file(
+            sss.download_file(
                 bucket_name, file["Key"], path(file["Key"], folder))
 
 
 def find_file_paths(file_format: str = "", folder: str = ".") -> list[str]:
     "Return the file paths of a file format"
-    return [file for file in glob.iglob(f'*.{file_format}', root_dir=folder)]
+    return list(glob.iglob(f'*.{file_format}', root_dir=folder))
 
 
 def combine_csv_files(csv_files: list, merge_file_name: str, folder: str = ".") -> None:
