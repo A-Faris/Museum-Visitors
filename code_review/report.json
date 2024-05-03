@@ -2,26 +2,13 @@
  "files": [
   {
    "file_name": "./coding_problems/wednesday/test_solution.py",
-   "errors": [
-    "pipeline/pipeline.py:10:0: W0401: Wildcard import extract (wildcard-import)",
-    "pipeline/pipeline.py:27:33: W0622: Redefining built-in 'type' (redefined-builtin)",
-    "pipeline/pipeline.py:56:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 'os' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 're' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 'glob' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 'pd' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 'USEFUL_FILES' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0612: Unused variable 'client' (unused-variable)",
-    "pipeline/pipeline.py:10:0: W0614: Unused import(s) os, re, glob, pd, USEFUL_FILES and client from wildcard import of extract (unused-wildcard-import)"
-   ],
-   "score": 82.8
+   "errors": [],
+   "score": 100.0
   },
   {
    "file_name": "./pipeline/extract.py",
-   "errors": [
-    "pipeline/extract.py:52:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)"
-   ],
-   "score": 97.9
+   "errors": [],
+   "score": 100.0
   },
   {
    "file_name": "./pipeline/test_extract.py",
@@ -83,5 +70,5 @@
    "score": 97.8
   }
  ],
- "average_score": 90.6
+ "average_score": 93.4
 }

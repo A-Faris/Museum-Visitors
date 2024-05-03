@@ -9,27 +9,14 @@
 ./coding_problems/monday/test_monday.py
 ./coding_problems/monday/solution.py
 ./pipeline/pipeline.py
-************* Module pipeline
-pipeline/pipeline.py:10:0: W0401: Wildcard import extract (wildcard-import)
-pipeline/pipeline.py:27:33: W0622: Redefining built-in 'type' (redefined-builtin)
-pipeline/pipeline.py:56:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-pipeline/pipeline.py:10:0: W0612: Unused variable 'os' (unused-variable)
-pipeline/pipeline.py:10:0: W0612: Unused variable 're' (unused-variable)
-pipeline/pipeline.py:10:0: W0612: Unused variable 'glob' (unused-variable)
-pipeline/pipeline.py:10:0: W0612: Unused variable 'pd' (unused-variable)
-pipeline/pipeline.py:10:0: W0612: Unused variable 'USEFUL_FILES' (unused-variable)
-pipeline/pipeline.py:10:0: W0612: Unused variable 'client' (unused-variable)
-pipeline/pipeline.py:10:0: W0614: Unused import(s) os, re, glob, pd, USEFUL_FILES and client from wildcard import of extract (unused-wildcard-import)
 
------------------------------------
-Your code has been rated at 8.28/10
+------------------------------------
+Your code has been rated at 10.00/10
 
 ./pipeline/extract.py
-************* Module extract
-pipeline/extract.py:52:11: R1721: Unnecessary use of a comprehension, use list(glob.iglob(f'*.{file_format}', root_dir=folder)) instead. (unnecessary-comprehension)
 
------------------------------------
-Your code has been rated at 9.79/10
+------------------------------------
+Your code has been rated at 10.00/10
 
 ./pipeline/test_extract.py
 ./pipeline/conftest.py
