@@ -15,13 +15,13 @@ USEFUL_FILES = "^lmnh.*.(csv|json)$"
 MERGE_CSV_FILE = 'lmnh_hist_data.csv'
 
 
-def create_folder(folder):
+def create_folder(folder: str) -> None:
     """Create a folder to store data"""
     if folder and not os.path.exists(folder):
         os.mkdir(folder)
 
 
-def get_client(access_key, secret_access_key):
+def get_client(access_key, secret_access_key) -> client:
     """Returns the s3 client"""
     return client('s3', aws_access_key_id=access_key,
                   aws_secret_access_key=secret_access_key)
@@ -32,13 +32,13 @@ def path(file: str, folder: str = ".") -> str:
     return os.path.join(folder, file)
 
 
-def bucket_names(sss) -> list:
+def bucket_names(sss: client) -> list:
     """Print out bucket names"""
     buckets = sss.list_buckets()["Buckets"]
     return [bucket["Name"] for bucket in buckets]
 
 
-def download_bucket(sss, bucket_name: str, folder=".") -> None:
+def download_bucket(sss: client, bucket_name: str, folder=".") -> None:
     """Download the bucket contents"""
     bucket = sss.list_objects(Bucket=bucket_name)
     for file in bucket["Contents"]:
