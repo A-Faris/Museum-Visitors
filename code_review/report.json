@@ -1,7 +1,7 @@
 {
  "files": [
   {
-   "file_name": "./coding_problems/wednesday/test_solution.py",
+   "file_name": "./pipeline/pipeline.py",
    "errors": [],
    "score": 100.0
   },
@@ -9,66 +9,7 @@
    "file_name": "./pipeline/extract.py",
    "errors": [],
    "score": 100.0
-  },
-  {
-   "file_name": "./pipeline/test_extract.py",
-   "errors": [
-    "workshop/movie_api/api.py:26:30: E1131: unsupported operand type(s) for | (unsupported-binary-operation)",
-    "workshop/movie_api/api.py:28:22: R6201: Consider using set for membership test (use-set-for-membership)",
-    "workshop/movie_api/api.py:33:25: R6201: Consider using set for membership test (use-set-for-membership)",
-    "workshop/movie_api/api.py:37:0: W0612: Unused variable 'endpoint_index' (unused-variable)",
-    "workshop/movie_api/api.py:43:0: W0612: Unused variable 'endpoint_get_movies' (unused-variable)",
-    "workshop/movie_api/api.py:64:0: W0612: Unused variable 'endpoint_post_movies' (unused-variable)",
-    "workshop/movie_api/api.py:98:0: W0612: Unused variable 'endpoint_patch_movie' (unused-variable)",
-    "workshop/movie_api/api.py:125:0: W0612: Unused variable 'endpoint_get_movie' (unused-variable)",
-    "workshop/movie_api/api.py:136:0: W0612: Unused variable 'endpoint_delete_movie' (unused-variable)",
-    "workshop/movie_api/api.py:147:0: W0612: Unused variable 'endpoint_get_genres' (unused-variable)",
-    "workshop/movie_api/api.py:158:0: W0612: Unused variable 'endpoint_movies_by_genre' (unused-variable)",
-    "workshop/movie_api/api.py:173:0: W0612: Unused variable 'endpoint_search_actor' (unused-variable)",
-    "workshop/movie_api/api.py:190:0: W0612: Unused variable 'endpoint_get_movies_by_country' (unused-variable)"
-   ],
-   "score": 84.4
-  },
-  {
-   "file_name": "./workshop/movie_api/test_api.py",
-   "errors": [
-    "workshop/movie_api/import_movie.py:42:0: R0913: Too many arguments (11/10) (too-many-arguments)"
-   ],
-   "score": 97.8
-  },
-  {
-   "file_name": "./workshop/movie_api/database.py",
-   "errors": [
-    "workshop/marine_experiments/database_functions.py:107:21: R6102: Consider using an in-place tuple instead of list (consider-using-tuple)",
-    "workshop/marine_experiments/database_functions.py:8:0: W0612: Unused variable 'get_db_connection' (unused-variable)",
-    "workshop/marine_experiments/database_functions.py:14:0: W0612: Unused variable 'get_subject_info' (unused-variable)",
-    "workshop/marine_experiments/database_functions.py:32:0: W0612: Unused variable 'get_experiment_info' (unused-variable)",
-    "workshop/marine_experiments/database_functions.py:56:0: W0612: Unused variable 'delete_experiment_info' (unused-variable)",
-    "workshop/marine_experiments/database_functions.py:72:0: W0612: Unused variable 'post_experiment_info' (unused-variable)",
-    "workshop/marine_experiments/database_functions.py:91:0: W0612: Unused variable 'get_subject_id_info' (unused-variable)"
-   ],
-   "score": 85.1
-  },
-  {
-   "file_name": "./workshop/marine_experiments/api.py",
-   "errors": [
-    "workshop/marine_experiments/api.py:61:26: R6201: Consider using set for membership test (use-set-for-membership)",
-    "workshop/marine_experiments/api.py:16:0: W0612: Unused variable 'get_subject' (unused-variable)",
-    "workshop/marine_experiments/api.py:22:0: W0612: Unused variable 'get_experiment' (unused-variable)",
-    "workshop/marine_experiments/api.py:38:0: W0612: Unused variable 'delete_experiment' (unused-variable)",
-    "workshop/marine_experiments/api.py:47:0: W0612: Unused variable 'post_experiment' (unused-variable)",
-    "workshop/marine_experiments/api.py:80:0: W0612: Unused variable 'get_subject_id' (unused-variable)"
-   ],
-   "score": 88.7
-  },
-  {
-   "file_name": "./workshop/marine_experiments/test_api.py",
-   "errors": [
-    " (previous run: 8.44/10, +0.43)",
-    "workshop/import_movie.py:42:0: R0913: Too many arguments (11/10) (too-many-arguments)"
-   ],
-   "score": 97.8
   }
  ],
- "average_score": 93.4
+ "average_score": 100.0
 }
