@@ -7,7 +7,7 @@ def read_input() -> list[str]:
         return f.readlines()
 
 
-def higher_measurement(depths, num) -> int:
+def higher_measurement(depths: list[str], num: int) -> int:
     """Counts if the current measurement is higher than a previous measurement"""
     return sum(1 for i in range(num, len(depths)) if int(depths[i-num]) < int(depths[i]))
 
