@@ -1,6 +1,11 @@
 {
  "files": [
   {
+   "file_name": "./coding_problem/monday/solution.py",
+   "errors": [],
+   "score": 100.0
+  },
+  {
    "file_name": "./pipeline/pipeline.py",
    "errors": [],
    "score": 100.0
