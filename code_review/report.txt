@@ -3,6 +3,14 @@
 ------------------------------------
 Your code has been rated at 10.00/10
 
+./kafka/consumer.py
+************* Module consumer
+kafka/consumer.py:13:18: E0602: Undefined variable 'KafkaException' (undefined-variable)
+kafka/consumer.py:15:20: E0602: Undefined variable 'json' (undefined-variable)
+
+-----------------------------------
+Your code has been rated at 5.24/10
+
 ./pipeline/pipeline.py
 
 ------------------------------------

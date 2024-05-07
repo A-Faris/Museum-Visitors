@@ -6,6 +6,14 @@
    "score": 100.0
   },
   {
+   "file_name": "./kafka/consumer.py",
+   "errors": [
+    "kafka/consumer.py:13:18: E0602: Undefined variable 'KafkaException' (undefined-variable)",
+    "kafka/consumer.py:15:20: E0602: Undefined variable 'json' (undefined-variable)"
+   ],
+   "score": 52.4
+  },
+  {
    "file_name": "./pipeline/pipeline.py",
    "errors": [],
    "score": 100.0
@@ -16,5 +24,5 @@
    "score": 100.0
   }
  ],
- "average_score": 100.0
+ "average_score": 88.1
 }
