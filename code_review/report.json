@@ -44,13 +44,12 @@
    "file_name": "./pipeline_folder/test_extract.py",
    "errors": [
     "pipeline_folder/consumer.py:56:20: R0204: Redefinition of dict_value type from int to datetime.time (redefined-variable-type)",
-    "pipeline_folder/consumer.py:70:4: R1705: Unnecessary \"elif\" after \"return\", remove the leading \"el\" from \"elif\" (no-else-return)",
+    "pipeline_folder/consumer.py:67:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)",
     "pipeline_folder/consumer.py:14:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)",
-    "pipeline_folder/consumer.py:15:0: W0612: Unused variable 'TIME_RANGE' (unused-variable)",
-    "pipeline_folder/consumer.py:116:8: W0612: Unused variable '_' (unused-variable)"
+    "pipeline_folder/consumer.py:106:8: W0612: Unused variable '_' (unused-variable)"
    ],
-   "score": 93.2
+   "score": 94.7
   }
  ],
- "average_score": 70.5
+ "average_score": 70.7
 }
