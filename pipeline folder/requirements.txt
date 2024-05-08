@@ -1,8 +1,0 @@
-os
-re
-glob
-json
-boto3
-python-dotenv
-pandas
-psycopg2-binary
