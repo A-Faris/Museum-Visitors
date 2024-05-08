@@ -1,28 +1,3 @@
-./pipeline folder/pipeline.py
-************* Module pipeline
-pipeline folder/pipeline.py:110:8: E1111: Assigning result of a function call, where the function has no return (assignment-from-no-return)
-pipeline folder/pipeline.py:110:8: C0103: Constant name "logger" doesn't conform to the `UPPER_CASE` group in the '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)
-pipeline folder/pipeline.py:110:8: W0612: Unused variable 'logger' (unused-variable)
-
------------------------------------
-Your code has been rated at 8.85/10
-
-./pipeline folder/extract.py
-
-------------------------------------
-Your code has been rated at 10.00/10
-
-./pipeline folder/test_extract.py
-./pipeline folder/consumer.py
-************* Module consumer
-pipeline folder/consumer.py:51:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-pipeline folder/consumer.py:12:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)
-pipeline folder/consumer.py:84:8: W0612: Unused variable '_' (unused-variable)
-
------------------------------------
-Your code has been rated at 9.41/10
-
-./pipeline folder/conftest.py
 ./coding_problem/day_1/solution.py
 
 ------------------------------------
@@ -33,15 +8,31 @@ Your code has been rated at 10.00/10
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
+./coding_problem/day_3/solution.py
+************* Module solution
+coding_problem/day_3/solution.py:14:10: E0602: Undefined variable 'location' (undefined-variable)
+coding_problem/day_3/solution.py:15:10: E0602: Undefined variable 'location_two' (undefined-variable)
+
+--------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 10.00/10, -10.00)
+
+./coding_problem/day_4/solution.py
+************* Module solution
+coding_problem/day_4/solution.py:14:10: E0602: Undefined variable 'location' (undefined-variable)
+coding_problem/day_4/solution.py:15:10: E0602: Undefined variable 'location_two' (undefined-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+
 ./pipeline_folder/pipeline.py
 
--------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 8.85/10, +1.15)
+------------------------------------
+Your code has been rated at 10.00/10
 
 ./pipeline_folder/extract.py
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+------------------------------------
+Your code has been rated at 10.00/10
 
 ./pipeline_folder/test_extract.py
 ./pipeline_folder/consumer.py
@@ -50,7 +41,7 @@ pipeline_folder/consumer.py:53:4: R1705: Unnecessary "elif" after "return", remo
 pipeline_folder/consumer.py:13:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)
 pipeline_folder/consumer.py:98:8: W0612: Unused variable '_' (unused-variable)
 
-------------------------------------------------------------------
-Your code has been rated at 9.49/10 (previous run: 9.41/10, +0.08)
+-----------------------------------
+Your code has been rated at 9.49/10
 
 ./pipeline_folder/conftest.py
