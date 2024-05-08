@@ -6,6 +6,8 @@ def read_input() -> list[str]:
     with open("input.txt", "r", encoding="utf-8") as f:
         return f.readlines()
 
+# Write solution below
+
 
 def higher_measurement(depths: list[str], num: int) -> int:
     """Counts if the current measurement is higher than a previous measurement"""

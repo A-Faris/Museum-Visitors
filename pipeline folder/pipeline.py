@@ -15,6 +15,14 @@ from extract import BUCKET_FOLDER, MERGE_CSV_FILE, BUCKET_NAME, \
 LOG_FOLDER = "logs"
 
 
+def log_to_file(file_name: str, folder: str = LOG_FOLDER) -> None:
+    create_folder(folder)
+    logging.basicConfig(filename=path(f'{file_name}_{(time.time())}.log', folder),
+                        encoding='utf-8',
+                        level=logging.INFO,
+                        filemode='w')
+
+
 def get_db_connection() -> connection:
     """Get connection"""
     load_dotenv()
@@ -99,9 +107,8 @@ if __name__ == "__main__":
     print(args)
 
     if args.log:
-        create_folder(LOG_FOLDER)
-        logging.basicConfig(filename=path(f'pipeline_{(time.time())}.log', LOG_FOLDER),
-                            encoding='utf-8', level=logging.INFO, filemode='w')
+        logger = log_to_file("pipeline")
+
     else:
         logging.basicConfig(level=logging.INFO)
 
