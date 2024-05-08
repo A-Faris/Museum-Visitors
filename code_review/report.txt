@@ -33,3 +33,24 @@ Your code has been rated at 10.00/10
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
+./pipeline_folder/pipeline.py
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 8.85/10, +1.15)
+
+./pipeline_folder/extract.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+./pipeline_folder/test_extract.py
+./pipeline_folder/consumer.py
+************* Module consumer
+pipeline_folder/consumer.py:53:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+pipeline_folder/consumer.py:13:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)
+pipeline_folder/consumer.py:98:8: W0612: Unused variable '_' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 9.49/10 (previous run: 9.41/10, +0.08)
+
+./pipeline_folder/conftest.py

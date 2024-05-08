@@ -32,7 +32,31 @@
    "file_name": "./coding_problem/day_2/solution.py",
    "errors": [],
    "score": 100.0
+  },
+  {
+   "file_name": "./pipeline_folder/pipeline.py",
+   "errors": [
+    " (previous run: 10.00/10, +0.00)"
+   ],
+   "score": 100.0
+  },
+  {
+   "file_name": "./pipeline_folder/extract.py",
+   "errors": [
+    " (previous run: 8.85/10, +1.15)"
+   ],
+   "score": 100.0
+  },
+  {
+   "file_name": "./pipeline_folder/test_extract.py",
+   "errors": [
+    " (previous run: 10.00/10, +0.00)",
+    "pipeline_folder/consumer.py:53:4: R1705: Unnecessary \"elif\" after \"return\", remove the leading \"el\" from \"elif\" (no-else-return)",
+    "pipeline_folder/consumer.py:13:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)",
+    "pipeline_folder/consumer.py:98:8: W0612: Unused variable '_' (unused-variable)"
+   ],
+   "score": 94.9
   }
  ],
- "average_score": 96.5
+ "average_score": 97.2
 }
