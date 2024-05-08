@@ -42,6 +42,8 @@ def check_error(kiosk: dict) -> str:
 
     return ""
 
+    # Can't accept times before and after certain times and in the future
+
 
 def consume_messages(consumer: Consumer):
     print("Checking")
