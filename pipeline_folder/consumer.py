@@ -32,7 +32,7 @@ def check_error(kiosk: dict) -> str:
         ('site', int, SITE_VALUES),
         ('val', int, VAL_VALUES),
         ('type', int, TYPE_VALUES),
-        # ('at', time, TIME_RANGE)
+        ('at', time, TIME_RANGE)
     ]
 
     for key, type_, values in checks:
@@ -64,26 +64,16 @@ def check_error(kiosk: dict) -> str:
     return ""
 
 
-def consume_messages(consumer: Consumer, log: bool):
+def consume_messages(consumer: Consumer):
     print("Checking")
     msg = consumer.poll(20)
     if msg is None:
-        return "Waiting..."
+        print("Waiting...")
     elif msg.error():
         logging.info(msg.error())
-        return msg.error()
+        print(msg.error())
     else:
-        kiosk_data = json.loads(msg.value().decode())
-
-        error = check_error(kiosk_data)
-        if error:
-            if log:
-                logging.error(msg=(kiosk_data, error))
-                return kiosk_data, error
-            return "Waiting..."
-
-        import_to_database(kiosk_data)
-        return kiosk_data
+        return json.loads(msg.value().decode())
 
 
 def log_argument() -> argparse.Namespace:
@@ -114,4 +104,16 @@ if __name__ == "__main__":
     consumer.subscribe([environ["TOPIC"]])
 
     for _ in range(MAX_MESSAGES):
-        print(consume_messages(consumer, log))
+        kiosk_data = consume_messages(consumer)
+        if not kiosk_data:
+            continue
+
+        error = check_error(kiosk_data)
+        if error:
+            if log:
+                logging.error(msg=(kiosk_data, error))
+                print(kiosk_data, error)
+            print("Waiting...")
+        else:
+            import_to_database(kiosk_data)
+            print(kiosk_data)
