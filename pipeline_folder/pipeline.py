@@ -59,10 +59,20 @@ def import_to_review(site: str, val: str, at: str) -> None:
 
     conn.commit()
     cur.close()
-    logging.info("All files downloaded.")
 
 
-def import_to_database(csv_file: str, folder: str, limit: int = None):
+def import_to_database(data: dict) -> None:
+    """Filter data and import to correct table"""
+    if data.get("type"):
+        import_to_request(data['site'], data['type'], data['at'])
+        logging.info("data imported to request.")
+    else:
+        import_to_review(data['site'], data['val'], data['at'])
+        logging.info("data imported to review.")
+    logging.info(data)
+
+
+def send_to_database(csv_file: str, folder: str, limit: int = None) -> None:
     """Import csv file into the RDS database"""
     file = path(csv_file, folder)
     with open(file, newline='', encoding="utf-8") as csvfile:
@@ -70,14 +80,7 @@ def import_to_database(csv_file: str, folder: str, limit: int = None):
             csvfile = [next(csvfile) for _ in range(limit)]
         reader = csv.DictReader(csvfile)
         for row in reader:
-            if row['type']:
-                import_to_request(row['site'], row['type'],
-                                  row['at'])
-                logging.info("csv data imported to request.")
-            else:
-                import_to_review(row['site'], row['val'],
-                                 row['at'])
-                logging.info("csv data imported to review.")
+            import_to_database(row)
         logging.info("All files downloaded.")
 
 
@@ -123,4 +126,4 @@ if __name__ == "__main__":
     combine_csv_files(csv_files, args.csv_file, args.folder)
     delete_files(csv_files, args.csv_file, args.folder)
 
-    import_to_database(args.csv_file, args.folder, args.num_of_rows)
+    send_to_database(args.csv_file, args.folder, args.num_of_rows)
