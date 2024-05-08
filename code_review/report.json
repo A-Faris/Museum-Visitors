@@ -1,28 +1,40 @@
 {
  "files": [
   {
-   "file_name": "./coding_problem/monday/solution.py",
-   "errors": [],
-   "score": 100.0
-  },
-  {
-   "file_name": "./kafka/consumer.py",
+   "file_name": "./pipeline folder/pipeline.py",
    "errors": [
-    "kafka/consumer.py:13:18: E0602: Undefined variable 'KafkaException' (undefined-variable)",
-    "kafka/consumer.py:15:20: E0602: Undefined variable 'json' (undefined-variable)"
+    "pipeline folder/pipeline.py:110:8: E1111: Assigning result of a function call, where the function has no return (assignment-from-no-return)",
+    "pipeline folder/pipeline.py:110:8: C0103: Constant name \"logger\" doesn't conform to the `UPPER_CASE` group in the '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)",
+    "pipeline folder/pipeline.py:110:8: W0612: Unused variable 'logger' (unused-variable)"
    ],
-   "score": 52.4
+   "score": 88.5
   },
   {
-   "file_name": "./pipeline/pipeline.py",
+   "file_name": "./pipeline folder/extract.py",
    "errors": [],
    "score": 100.0
   },
   {
-   "file_name": "./pipeline/extract.py",
+   "file_name": "./pipeline folder/test_extract.py",
+   "errors": [
+    "pipeline folder/consumer.py:49:4: R1705: Unnecessary \"elif\" after \"return\", remove the leading \"el\" from \"elif\" (no-else-return)",
+    "pipeline folder/consumer.py:12:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)",
+    "pipeline folder/consumer.py:82:8: W0612: Unused variable '_' (unused-variable)"
+   ],
+   "score": 94.1
+  },
+  {
+   "file_name": "./pipeline folder/conftest.py",
    "errors": [],
    "score": 100.0
+  },
+  {
+   "file_name": "./coding_problem/day_2/solution.py",
+   "errors": [
+    "coding_problem/day_2/solution.py:13:4: W0612: Unused variable 'inputs' (unused-variable)"
+   ],
+   "score": 80.0
   }
  ],
- "average_score": 88.1
+ "average_score": 92.5
 }
