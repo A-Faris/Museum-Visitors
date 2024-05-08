@@ -17,9 +17,9 @@
   {
    "file_name": "./pipeline folder/test_extract.py",
    "errors": [
-    "pipeline folder/consumer.py:49:4: R1705: Unnecessary \"elif\" after \"return\", remove the leading \"el\" from \"elif\" (no-else-return)",
+    "pipeline folder/consumer.py:51:4: R1705: Unnecessary \"elif\" after \"return\", remove the leading \"el\" from \"elif\" (no-else-return)",
     "pipeline folder/consumer.py:12:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)",
-    "pipeline folder/consumer.py:82:8: W0612: Unused variable '_' (unused-variable)"
+    "pipeline folder/consumer.py:84:8: W0612: Unused variable '_' (unused-variable)"
    ],
    "score": 94.1
   },
@@ -30,11 +30,9 @@
   },
   {
    "file_name": "./coding_problem/day_2/solution.py",
-   "errors": [
-    "coding_problem/day_2/solution.py:13:4: W0612: Unused variable 'inputs' (unused-variable)"
-   ],
-   "score": 80.0
+   "errors": [],
+   "score": 100.0
   }
  ],
- "average_score": 92.5
+ "average_score": 96.5
 }
