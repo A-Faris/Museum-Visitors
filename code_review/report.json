@@ -29,10 +29,15 @@
    "score": 0.0
   },
   {
-   "file_name": "./pipeline_folder/pipeline.py",
+   "file_name": "./pipeline_folder/run_schema.py",
    "errors": [
     " (previous run: 0.00/10, +0.00)"
    ],
+   "score": 100.0
+  },
+  {
+   "file_name": "./pipeline_folder/pipeline.py",
+   "errors": [],
    "score": 100.0
   },
   {
@@ -45,11 +50,10 @@
    "errors": [
     "pipeline_folder/consumer.py:57:20: R0204: Redefinition of dict_value type from datetime.time to int (redefined-variable-type)",
     "pipeline_folder/consumer.py:70:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)",
-    "pipeline_folder/consumer.py:14:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)",
     "pipeline_folder/consumer.py:109:8: W0612: Unused variable '_' (unused-variable)"
    ],
-   "score": 94.8
+   "score": 96.1
   }
  ],
- "average_score": 70.7
+ "average_score": 74.5
 }
