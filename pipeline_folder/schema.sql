@@ -36,7 +36,7 @@ CREATE TABLE request(
     request_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     exhibition_id SMALLINT NOT NULL,
     assistance_id SMALLINT NOT NULL,
-    created_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP(0) NOT NULL,
     FOREIGN KEY (assistance_id) REFERENCES assistance(assistance_id),
     FOREIGN KEY (exhibition_id) REFERENCES exhibition(exhibition_id)
 );
@@ -50,7 +50,7 @@ CREATE TABLE review(
     review_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     exhibition_id SMALLINT NOT NULL,
     rating_id SMALLINT NOT NULL,
-    created_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP(0) NOT NULL,
     FOREIGN KEY (rating_id) REFERENCES rating(rating_id),
     FOREIGN KEY (exhibition_id) REFERENCES exhibition(exhibition_id)
 );

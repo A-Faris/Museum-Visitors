@@ -63,13 +63,13 @@ def import_to_review(site: str, val: str, at: str) -> None:
 
 def import_to_database(data: dict) -> None:
     """Filter data and import to correct table"""
-    if data.get("type"):
+    logging.info(data)
+    if data.get("val") == -1:
         import_to_request(data['site'], data['type'], data['at'])
         logging.info("data imported to request.")
     else:
         import_to_review(data['site'], data['val'], data['at'])
         logging.info("data imported to review.")
-    logging.info(data)
 
 
 def send_to_database(csv_file: str, folder: str, limit: int = None) -> None:

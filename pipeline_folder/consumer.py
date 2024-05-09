@@ -5,7 +5,7 @@ from confluent_kafka import Consumer
 from os import environ
 from dotenv import load_dotenv
 from pipeline import log_to_file, import_to_database
-from datetime import datetime, time
+from datetime import datetime, time, UTC
 
 MAX_MESSAGES = 10000
 SITE_VALUES = (0, 1, 2, 3, 4, 5)
@@ -29,15 +29,27 @@ def check_type(check_dict: dict, key: str, type_: type, values: tuple, dict_valu
 def check_error(kiosk: dict) -> str:
     """Checks for errors and returns an appropriate error message"""
     checks = [
+        ('at', time, TIME_RANGE),
         ('site', int, SITE_VALUES),
         ('val', int, VAL_VALUES),
         ('type', int, TYPE_VALUES),
-        ('at', time, TIME_RANGE)
     ]
 
     for key, type_, values in checks:
         dict_value = kiosk.get(key)
+        print(dict_value)
         match key:
+            case "at":
+                try:
+                    date = datetime.fromisoformat(dict_value)
+                except Exception:
+                    return "Key at could not be converted to datetime"
+
+                if date > datetime.now(UTC):
+                    return "Key at is set in the future"
+
+                dict_value = date.time().replace(microsecond=0)
+
             case "site":
                 if dict_value:
                     if not dict_value.isdigit():
@@ -45,17 +57,8 @@ def check_error(kiosk: dict) -> str:
                     dict_value = int(dict_value)
 
             case "type":
-                if not dict_value == min(VAL_VALUES):
+                if not kiosk["val"] == min(VAL_VALUES):
                     continue
-
-            case "at":
-                try:
-                    date = datetime.fromisoformat(dict_value)
-                    if date > datetime.now():
-                        return "Invalid Value For Key at"
-                    dict_value = date.time()
-                except Exception:
-                    return "Invalid Value For Key at"
 
         error = check_type(kiosk, key, type_, values, dict_value)
         if error:
@@ -115,5 +118,5 @@ if __name__ == "__main__":
                 print(kiosk_data, error)
             print("Waiting...")
         else:
-            import_to_database(kiosk_data)
             print(kiosk_data)
+            import_to_database(kiosk_data)
