@@ -37,12 +37,12 @@ Your code has been rated at 10.00/10
 ./pipeline_folder/test_extract.py
 ./pipeline_folder/consumer.py
 ************* Module consumer
-pipeline_folder/consumer.py:56:20: R0204: Redefinition of dict_value type from int to datetime.time (redefined-variable-type)
-pipeline_folder/consumer.py:67:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+pipeline_folder/consumer.py:57:20: R0204: Redefinition of dict_value type from datetime.time to int (redefined-variable-type)
+pipeline_folder/consumer.py:70:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
 pipeline_folder/consumer.py:14:0: W0612: Unused variable 'REQUIRED_KEYS' (unused-variable)
-pipeline_folder/consumer.py:106:8: W0612: Unused variable '_' (unused-variable)
+pipeline_folder/consumer.py:109:8: W0612: Unused variable '_' (unused-variable)
 
 -----------------------------------
-Your code has been rated at 9.47/10
+Your code has been rated at 9.48/10
 
 ./pipeline_folder/conftest.py
