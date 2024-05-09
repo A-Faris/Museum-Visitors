@@ -1,8 +1,10 @@
--- This file should contain all code required to create & seed database tables.
+-- This file should contain all code required to create & seed database tables.;
+
+-- psql postgres -f schema.sql;
 
 -- DROP DATABASE IF EXISTS museum;
 -- CREATE DATABASE museum;
--- \c museum
+-- \c museum;
 
 DROP TABLE IF EXISTS floor, department, exhibition, request, assistance, review, rating;
 

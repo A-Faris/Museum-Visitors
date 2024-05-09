@@ -2,16 +2,16 @@ import logging
 import json
 import argparse
 from confluent_kafka import Consumer
+from datetime import datetime, time, UTC
 from os import environ
 from dotenv import load_dotenv
 from pipeline import log_to_file, import_to_database
-from datetime import datetime, time, UTC
+
 
 MAX_MESSAGES = 10000
 SITE_VALUES = (0, 1, 2, 3, 4, 5)
 VAL_VALUES = (-1, 0, 1, 2, 3, 4)
 TYPE_VALUES = (0, 1)
-REQUIRED_KEYS = {"at", "site", "val"}
 TIME_RANGE = (time(8, 45), time(18, 15))
 
 

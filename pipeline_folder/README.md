@@ -9,3 +9,7 @@ This folder should contain all code, documentation and resources required for th
 - 'pipline.py' - A pipeline script that downloads kiosk data from S3 and uploads it to the database
 
 - 'analysis.ipynb' - An analysis notebook, that connects to the database and explores the data it contains
+
+- 'consumer.py' - A python script which receives data from lmnh kafka and imports valid data into the RDS database
+
+- 'run_schema.py' - A python script which runs the schema.sql file
