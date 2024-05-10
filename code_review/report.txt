@@ -10,24 +10,28 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 ./coding_problem/day_3/solution.py
 ************* Module solution
-coding_problem/day_3/solution.py:14:10: E0602: Undefined variable 'location' (undefined-variable)
-coding_problem/day_3/solution.py:15:10: E0602: Undefined variable 'location_two' (undefined-variable)
+coding_problem/day_3/solution.py:13:29: C0103: Argument name "num1" doesn't conform to '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)
+coding_problem/day_3/solution.py:13:40: C0103: Argument name "num2" doesn't conform to '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)
+coding_problem/day_3/solution.py:18:33: C0103: Argument name "num1" doesn't conform to '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)
+coding_problem/day_3/solution.py:18:44: C0103: Argument name "num2" doesn't conform to '(?:(?P<snake_case>[a-z_]+)|(?P<UPPER_CASE>[A-Z_]+)|(?P<PascalCase>[^a-z][A-Za-z]+)|(?P<camelCase>[^A-Z][A-Za-z]+))$' pattern (invalid-name)
+coding_problem/day_3/solution.py:18:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
 
---------------------------------------------------------------------
-Your code has been rated at 0.00/10 (previous run: 10.00/10, -10.00)
+-------------------------------------------------------------------
+Your code has been rated at 7.73/10 (previous run: 10.00/10, -2.27)
 
 ./coding_problem/day_4/solution.py
 ************* Module solution
-coding_problem/day_4/solution.py:14:10: E0602: Undefined variable 'location' (undefined-variable)
-coding_problem/day_4/solution.py:15:10: E0602: Undefined variable 'location_two' (undefined-variable)
+coding_problem/day_4/solution.py:13:4: W0612: Unused variable 'inputs' (unused-variable)
 
 ------------------------------------------------------------------
-Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+Your code has been rated at 8.00/10 (previous run: 7.73/10, +0.27)
 
 ./pipeline_folder/run_schema.py
+************* Module run_schema
+pipeline_folder/run_schema.py:8:8: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 9.41/10
 
 ./pipeline_folder/pipeline.py
 
@@ -49,4 +53,3 @@ pipeline_folder/consumer.py:109:8: W0612: Unused variable '_' (unused-variable)
 -----------------------------------
 Your code has been rated at 9.61/10
 
-./pipeline_folder/conftest.py
