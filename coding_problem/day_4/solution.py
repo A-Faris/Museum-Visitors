@@ -11,5 +11,3 @@ def read_input() -> list[str]:
 
 if __name__ == '__main__':
     inputs = read_input()
-    print(location(inputs))
-    print(location_two(inputs))
