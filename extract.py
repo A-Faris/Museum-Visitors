@@ -1,12 +1,13 @@
 """Extract file"""
 
 import argparse
-import os
+from os import mkdir, remove, path, environ
 import re
 import glob
 # import json
+
 from boto3 import client
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 import pandas as pd  # csv
 
 BUCKET_FOLDER = "buckets"
@@ -17,19 +18,8 @@ MERGE_CSV_FILE = 'lmnh_hist_data.csv'
 
 def create_folder(folder: str) -> None:
     """Create a folder to store data"""
-    if folder and not os.path.exists(folder):
-        os.mkdir(folder)
-
-
-def get_client(access_key, secret_access_key):
-    """Returns the s3 client"""
-    return client('s3', aws_access_key_id=access_key,
-                  aws_secret_access_key=secret_access_key)
-
-
-def path(file: str, folder: str = ".") -> str:
-    """Path location to a file inside a folder"""
-    return os.path.join(folder, file)
+    if folder and not path.exists(folder):
+        mkdir(folder)
 
 
 def bucket_names(sss) -> list:
@@ -44,7 +34,7 @@ def download_bucket(sss, bucket_name: str, folder=".") -> None:
     for file in bucket["Contents"]:
         if re.search(USEFUL_FILES, file["Key"]):
             sss.download_file(
-                bucket_name, file["Key"], path(file["Key"], folder))
+                bucket_name, file["Key"], path.join(folder, file["Key"]))
 
 
 def find_file_paths(file_format: str = "", folder: str = ".") -> list[str]:
@@ -54,17 +44,17 @@ def find_file_paths(file_format: str = "", folder: str = ".") -> list[str]:
 
 def combine_csv_files(csv_files: list, merge_file_name: str, folder: str = ".") -> None:
     """Combine multiple csv files into one csv file"""
-    combined_file = pd.concat([pd.read_csv(path(file, folder)) for file in csv_files
+    combined_file = pd.concat([pd.read_csv(path.join(folder, file)) for file in csv_files
                               if merge_file_name not in file])
 
-    combined_file.to_csv(path(merge_file_name, folder), index=False)
+    combined_file.to_csv(path.join(folder, merge_file_name), index=False)
 
 
 def delete_files(files: list, exception: str = None, folder: str = ".") -> list[None]:
     """Delete files in folder"""
     if exception in files:
         files.remove(exception)
-    return [os.remove(path(file, folder)) for file in files if os.path.exists(path(file, folder))]
+    return [remove(path.join(folder, file)) for file in files if path.exists(path.join(folder, file))]
 
 # def combine_json_files(read_files: list, merge_file_name: str, folder: str = ".") -> None:
 #     textfile_merged = open(merge_file_name, 'w')
@@ -78,8 +68,9 @@ def delete_files(files: list, exception: str = None, folder: str = ".") -> list[
 
 
 if __name__ == '__main__':
-    clients = get_client(dotenv_values().get("ACCESS_KEY"),
-                         dotenv_values().get("SECRET_ACCESS_KEY"))
+    load_dotenv()
+    clients = client("s3", aws_access_key_id=environ["ACCESS_KEY"],
+                     aws_secret_access_key=environ["SECRET_ACCESS_KEY"])
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--bucket", "-b",

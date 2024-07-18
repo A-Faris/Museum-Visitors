@@ -1,10 +1,12 @@
+from os import environ
 import logging
 import json
 import argparse
-from confluent_kafka import Consumer
 from datetime import datetime, time, UTC
-from os import environ
+
+from confluent_kafka import Consumer
 from dotenv import load_dotenv
+
 from pipeline import log_to_file, import_to_database
 
 

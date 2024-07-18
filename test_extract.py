@@ -1,12 +1,6 @@
 from unittest.mock import patch
-from extract import bucket_names, path, download_bucket, find_file_paths, delete_files, combine_csv_files
 
-# pylint: skip-file
-
-
-def test_path_valid() -> None:
-    location = path("random_file", "random_folder")
-    assert location == "random_folder/random_file"
+from extract import bucket_names, download_bucket, find_file_paths, delete_files, combine_csv_files
 
 
 @patch("extract.client")

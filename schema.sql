@@ -1,12 +1,4 @@
--- This file should contain all code required to create & seed database tables.;
-
--- psql postgres -f schema.sql;
-
--- DROP DATABASE IF EXISTS museum;
--- CREATE DATABASE museum;
--- \c museum;
-
-DROP TABLE IF EXISTS floor, department, exhibition, request, assistance, review, rating;
+DROP TABLE IF EXISTS floor, department, exhibition, request, assistance, review, rating CASCADE;
 
 CREATE TABLE floor(
     floor_id SMALLINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

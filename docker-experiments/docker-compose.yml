@@ -1,4 +1,0 @@
-services:
-  hello_world:
-    image: ubuntu
-    command: [/bin/echo, 'Hi Sigma Trainee! Your docker is installed correctly']

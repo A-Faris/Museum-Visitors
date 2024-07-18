@@ -1,23 +1,26 @@
 """Functions that interact with the database."""
 
+from os import path, environ
 import logging
 import csv
 import time
 import argparse
-from os import environ
+
+from boto3 import client
 from dotenv import load_dotenv
 from psycopg2 import connect
 from psycopg2.extensions import connection
+
 from extract import BUCKET_FOLDER, MERGE_CSV_FILE, BUCKET_NAME, \
-    path, get_client, find_file_paths, create_folder, download_bucket, \
-    dotenv_values, combine_csv_files, delete_files, bucket_names
+    find_file_paths, create_folder, download_bucket, \
+    combine_csv_files, delete_files, bucket_names
 
 LOG_FOLDER = "logs"
 
 
 def log_to_file(file_name: str, folder: str = LOG_FOLDER) -> None:
     create_folder(folder)
-    logging.basicConfig(filename=path(f'{file_name}_{(time.time())}.log', folder),
+    logging.basicConfig(filename=path.join(folder, f"{file_name}_{(time.time())}.log"),
                         encoding='utf-8',
                         level=logging.INFO,
                         filemode='w')
@@ -25,7 +28,6 @@ def log_to_file(file_name: str, folder: str = LOG_FOLDER) -> None:
 
 def get_db_connection() -> connection:
     """Get connection"""
-    load_dotenv()
     return connect(
         user=environ["DATABASE_USERNAME"],
         password=environ["DATABASE_PASSWORD"],
@@ -38,27 +40,25 @@ def get_db_connection() -> connection:
 def import_to_request(site: str, type_db: str, at: str) -> None:
     """Import into table request"""
     conn = get_db_connection()
-    cur = conn.cursor()
 
-    cur.execute(
-        """INSERT INTO request(exhibition_id, assistance_id, created_at)
-        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, float(type_db), at))
+    with conn.cursor() as cur:
+        cur.execute(
+            """INSERT INTO request(exhibition_id, assistance_id, created_at)
+            VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, float(type_db), at))
 
-    conn.commit()
-    cur.close()
+        conn.commit()
 
 
 def import_to_review(site: str, val: str, at: str) -> None:
     """Import into table review"""
     conn = get_db_connection()
-    cur = conn.cursor()
 
-    cur.execute(
-        """INSERT INTO review(exhibition_id, rating_id, created_at)
-        VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, val, at))
+    with conn.cursor() as cur:
+        cur.execute(
+            """INSERT INTO review(exhibition_id, rating_id, created_at)
+            VALUES (%s::INT, %s::INT, %s::TIMESTAMP)""", (site, val, at))
 
-    conn.commit()
-    cur.close()
+        conn.commit()
 
 
 def import_to_database(data: dict) -> None:
@@ -74,7 +74,7 @@ def import_to_database(data: dict) -> None:
 
 def send_to_database(csv_file: str, folder: str, limit: int = None) -> None:
     """Import csv file into the RDS database"""
-    file = path(csv_file, folder)
+    file = path.join(folder, csv_file)
     with open(file, newline='', encoding="utf-8") as csvfile:
         if limit:
             csvfile = [next(csvfile) for _ in range(limit)]
@@ -107,8 +107,9 @@ def cli_arguments(clients) -> argparse.Namespace:
 
 
 if __name__ == "__main__":
-    clients = get_client(dotenv_values().get("ACCESS_KEY"),
-                         dotenv_values().get("SECRET_ACCESS_KEY"))
+    load_dotenv()
+    clients = client("s3", aws_access_key_id=environ["ACCESS_KEY"],
+                     aws_secret_access_key=environ["SECRET_ACCESS_KEY"])
 
     args = cli_arguments(clients)
     print(args)
