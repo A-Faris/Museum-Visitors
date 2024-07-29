@@ -1,16 +1,8 @@
-# Say what cloud provider we're working with
-
 provider "aws" {
     region = var.AWS_REGION
     access_key = var.AWS_ACCESS_KEY
     secret_key = var.AWS_SECRET_KEY
 }
-
-# Describe resources
-
-# resource "resource type" "internal name" {
-#     key = value
-# }
 
 resource "aws_instance" "c11-faris-kafka" {
   ami           = "ami-008ea0202116dbc56"

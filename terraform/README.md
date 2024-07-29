@@ -35,7 +35,7 @@ This is a configuration tool, not a language.
 
 ## Basic database config
 
-```sh
+```s
 resource "aws_db_instance" "museum-db" {
     allocated_storage            = 10
     db_name                      = ""
@@ -51,4 +51,15 @@ resource "aws_db_instance" "museum-db" {
     username                     = ""
     password                     = ""
 }
+```
+
+## Configuration
+
+Create a `Terraform.tfvars` file and populate it with the following:
+
+```bash
+DATABASE_USERNAME=your_username
+DATABASE_PASSWORD=your_password
+AWS_ACCESS_KEY=your_aws_access_key
+AWS_SECRET_KEY=your_aws_secret_key
 ```
